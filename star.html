@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- owl.carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    </link>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    </link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- owl.carousel 結束-->
+    <!-- 引用BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <title>OUTERSPACE的科學資料庫</title>
+    <style>
+        /* 動態畫底線 (一般)*/
+        /* 動態畫底線 (一般)*/
+        .nav-item a::after {
+            content: " ";
+            display: block;
+            width: 0%;
+            height: 4px;
+            background-color: orange;
+            transition: .4s .1s;
+        }
+
+        .nav-item a:hover::after {
+            width: 50%;
+        }
+
+
+
+        /* 带文字内容的分隔线 */
+        .hr-solid-content {
+            color: orange;
+            border: 0;
+            font-size: 24px;
+            padding: 1em 0;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+            mask-image: linear-gradient(to right, transparent, black, transparent);
+        }
+
+        .hr-solid-content::before {
+            content: attr(data-content);
+            position: absolute;
+            padding: 0 1ch;
+            line-height: 6px;
+            border: solid orange;
+            border-width: 0 99vw;
+            width: fit-content;
+            /* for 不支持fit-content浏览器 */
+            white-space: nowrap;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+
+        /* 滑動 */
+        /* .owl-theme .item {
+            height: 10rem;
+            background: #4dc7a0;
+            padding: 1rem;
+        } */
+
+        /* .owl-carousel .item h4 {
+            color: #fff;
+            font-weight: 400;
+            font-size: 1.4375rem;
+            margin-top: 0rem;
+        }  */
+
+        /* .owl-theme {
+            "container": "#base",
+                "items": 3,
+                "slideBy": "page",
+                "mouseDrag": true,
+                "swipeAngle": false,
+                "speed": 400
+        } */
+
+        /* 文字隱藏 */
+        .textSize {
+            overflow: hidden;
+            /* white-space: nowrap; */
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        /* 背景顏色 */
+        body {
+            /* color: orange; */
+            background: rgb(2, 0, 36);
+            background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        }
+
+        .textColor {
+            color: orange;
+        }
+
+           /* 圖片靠近放大 */
+
+        .card {
+            overflow: hidden;
+            transform: scale(1, 1);
+            transition: all 0.5s ease-out;
+            background: rgb(2, 0, 36);
+        }
+
+        .card:hover {
+            transform: scale(1.05, 1.05);
+        }
+
+
+        /* 靠近文字變色 */
+        .textColor:hover {
+            color: orange;
+        }
+
+        /* 超連結取消底線 */
+        a {
+            text-decoration: none
+        }
+
+          /* 回到頂端 */
+          #uupTop {
+            width: 50px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-image: url(_img/cover/rocket.png);
+            background-color: transparent;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light sticky-top clearfix">
+        <div class="container-fluid">
+            <a class="navbar-brand col-2" href="#"><img src="./_img/cover/Logo1.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ">
+                    <li class="nav-item col-3">
+                        <a class="nav-link active textColor" aria-current="page" href="homeword.html">基本介紹</a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" href="story.html">延伸閱讀</a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" href="star.html">星座相關</a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" href="news.html">科普知識</a>
+                    </li>
+                    <li class="nav-item2 dropdown col-3">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            觀測網站連結
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.google.com/moon/
+                                ">Google Sky</a></li>
+                            <li><a class="dropdown-item" href="https://720yun.com/t/eb42ejpvu1a?scene_id=461882
+                                ">太陽系 |solar system</a></li>
+                        </ul>
+                    </li>
+                    <form class="d-flex col-4" style="float: right">
+                        <input class="form-control me-2" type="search" placeholder="請輸入關鍵字" aria-label="Search">
+                        <button class="btn btn-outline-warning" type="submit">Search</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <hr class="hr-solid-content" data-content="12星座">
+    <br>
+    <!-- 卡片網格 -->
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="carousel-item active">
+                <div class="card item" style="width: 22rem;">
+                    <img src="./_img/star/Aquarius.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title textColor">水瓶座(1.21-2.19)</h5>
+                        <p class="card-text textSize textColor">
+                            是黃道十二宮的第十一宮，指的是出生日期大寒後至雨水前，約為每年1月20日至2月18日，
+                            對應天文學的寶瓶座。寶瓶宮的附庸星（葉門占星學）為離太陽最近、公轉週期最短的水星，
+                            代表水星表面的溫度到了夜間會降至100K。
+                            而在密宗占星學中，寶瓶宮的神秘守護星為木星，層次守護星為月亮。
+                        </p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                    <hr style="color:orange">
+                    <div class="card-body">
+                        <a href="https://reurl.cc/ERmDWk" target="_blank" class="card-link textColor">星座介紹</a>
+                        <a href="https://reurl.cc/RXDkdn" target="_blank" class="card-link textColor">性格特質</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card item" style="width: 22rem;">
+                <img src="./_img/star/Pisces.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">雙魚座(2.20-3.20)</h5>
+                    <p class="card-text textSize textColor">
+                        是占星術黃道十二宮之第十二宮，亦即最後一宮，指的是出生日期為雨水後至春分前，
+                        約為每年2月19日至3月20日；天文學對應的星座是雙魚座。雙魚宮的守護星為木星及海王星，代表色為紫色。
+                        雙魚宮的附庸星（葉門占星學）為金星，代表金星的表面及大氣層。
+                        而在密宗占星學中，雙魚宮的神秘守護星及層次守護星為冥王星。
+                    </p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/5p3aK7" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/kEvnGG" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card item" style="width: 22rem;">
+                <img src="./_img/star/Aries.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">牧羊座(3.21-4.20)</h5>
+                    <p class="card-text textSize textColor">
+                        是占星術黃道十二宮之第一宮，黃經從0°到30°，原對應的星座是牡羊座（牡羊座），
+                        在希臘傳統指綿羊，但由於歲差，現已移到雙魚座。每年3月21日前後太陽到這一宮，
+                        那時是春分，所以春分點又叫牡羊宮第一點，而牡羊宮指的出生日期為春分後至穀雨，
+                        約為每年3月21日至4月19日。牡羊宮的附庸星（葉門占星學）為太陽，代表太陽光及太陽風。
+                        而在密宗占星學中，牡羊宮的神秘守護星為水星，層次守護星為天王星。
+                    </p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/XV23ye" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/eOakxR" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card item" style="width: 22rem;">
+                <img src="./_img/star/Taurus.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">金牛座(4.21-5.21)</h5>
+                    <p class="card-text textSize textColor">
+                        是占星術黃道十二宮之第二宮，指的是出生日期為穀雨後至小滿前，約為每年4月20日至5月20日；
+                        天文學對應的星座是金牛座。金牛宮的附庸星（葉門占星學）為月亮，代表月相及月球環形山。
+                        而在密宗占星學中，金牛宮的神秘守護星及層次守護星為火神星。
+                    </p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/1m8zAV" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/xQX3gN" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- 5-8 -->
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card item" style="width: 22rem;">
+                <img src="./_img/star/Gemini.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">雙子座(5.22-6.21)</h5>
+                    <p class="card-text textSize textColor">是占星術黃道十二宮之第三宮，指的是出生日期為小滿後至夏至前，
+                        約為每年5月21日至6月21日；天文學對應的星座是雙子座，代表雙生兒。
+                        雙子宮的附庸星（葉門占星學）為金星，代表金星的軌道以平均1億800萬公里（0.72天文單位）距離繞著太陽，
+                        每224.65地球日公轉一周，也代表金星的自轉方向不僅是順時針的（稱為逆行自轉），金星還需243地球日自轉
+                        （是所有行星中轉得最慢的）。
+                        而在密宗占星學中，雙子宮的神秘守護星為金星（在葉門占星學中屬於歸附），層次守護星為地球。</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/MN2DYW" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/O4DmkR" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card item" style="width: 22rem;">
+                <img src="./_img/star/Cancer.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">巨蟹座(6.22-7.23)</h5>
+                    <p class="card-text textSize textColor">是占星術黃道十二宮之第四宮，指的是出生日期為夏至後至大暑前，
+                        約為每年6月22日至7月22日；天文學對應的星座是巨蟹座。巨蟹宮的附庸星（葉門占星學）為木星及海王星，
+                        代表木星的大紅斑以及海王星的大黑斑。
+                        而在密宗占星學中，巨蟹宮的神秘守護星及層次守護星為海王星（在葉門占星學中屬於歸附）。</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/eOpZ8j" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/V1eWjA" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card item" style="width: 22rem;">
+                <img src="./_img/star/Leo.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">獅子座(7.24-8.23)</h5>
+                    <p class="card-text textSize textColor">是占星術黃道十二宮之第五宮，指的是出生日期為大暑後至處暑前，
+                        約為每年7月23日至8月22日；天文學對應的星座是獅子座。獅子宮的附庸星（葉門占星學）為冥王星，
+                        代表冥王星的軌道及冥王星之心。
+                        而在密宗占星學中，獅子宮的神秘守護星及層次守護星為太陽（在西方占星術中屬於入廟）。</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/9pWQ5O" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/3YmMo9" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 22rem;">
+                <img src="./_img/star/Virgo.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">處女座(8.24-9.23)</h5>
+                    <p class="card-text textSize textColor">是黃道十二宮中的第六宮，對應天文學中的室女座。在西方占星學中，室女宮蘊含處女的概念，
+                        屬於土象、陰性的變動星宮。另外，室女宮受水星所管轄。水星也是室女宮的附庸星（葉門占星學），
+                        代表水星表面在白天的溫度可以高達700K。
+                        而在密宗占星學中，室女宮的神秘守護星為月亮，層次守護星為木星（在西方占星學中屬於落陷）。</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/4plGpL" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/0XnWX9" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- 9-12 -->
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card" style="width: 22rem;">
+                <img src="./_img/star/Libra.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">天秤座(9.24-10.23)</h5>
+                    <p class="card-text textSize textColor">是占星術黃道十二宮之第七宮，黃經從180°到210°，因天文學原對應的星座是天秤座，
+                        所以得名，但由於歲差，現已移到室女座。天秤宮的附庸星（葉門占星學）為土星，代表圍繞著土星的土星環。
+                        而在密宗占星學中，天秤宮的神秘守護星為天王星，層次守護星為土星（在葉門占星學中屬於歸附）。</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/D3x8oR" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/3YmM30" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 22rem;">
+                <img src="./_img/star/Scorpio.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">天蠍座(10.24-11.22)</h5>
+                    <p class="card-text textSize textColor">是占星術黃道十二宮之第八宮，指的是出生日期為霜降後至小雪前，約為每年10月24日至11月22日。
+                        天文學原對應的星座是天蠍座，在希臘傳統指蠍子，故而得名。每年10月23日之後太陽到這一宮，那時節氣是霜降。
+                        天蠍宮的守護星為火星及冥王星，代表色為深紅色。
+                        天蠍宮的附庸星（葉門占星學）為天王星，代表天王星的自轉軸傾斜98°。
+                        而在密宗占星學中，天蠍宮的神秘守護星為火星（在西方占星術中屬於入廟），層次守護星為水星。</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/NR2EYm" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/D3DOm5" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 22rem;">
+                <img src="./_img/star/Sagittarius.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">射手座(11.23-12.21)</h5>
+                    <p class="card-text textSize textColor">在占星術上對應黃道帶上的第九個星座人馬座，指出生日期為小雪後至冬至，
+                        約為每年11月23日至12月21日。本宮源自希臘神話中之半人馬，其對反星座是雙子宮。
+                        然而在一般市售的星象學專書中，是將此星座稱為射手座（Sagittarius），而非人馬座。
+                        在密宗占星學中，人馬座的神秘守護星為地球，層次守護星為火星。
+                    </p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/NR2EN5" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/aGzxV7" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 22rem;">
+                <img src="./_img/star/Capricorn.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title textColor">摩羯座(12.22-1.20)</h5>
+                    <p class="card-text textSize textColor">是占星術黃道十二宮之第十宮，源於摩羯座的星座圖。它跨越黃道帶天體的經度之間的270°和300°，
+                        指的是出生日期為冬至後至大寒前，約為每年12月22日至翌年1月19日；對應的星座是摩羯座。摩羯宮認為是性格內向的象徵，
+                        屬於四大星象中的土象星座，摩羯宮的守護星是土星。此外，摩羯宮的附庸星（葉門占星學）為火星，代表火星的表面。
+                        而在密宗占星學中摩羯宮的神秘守護星為土星（在西方占星術中屬於入廟），層次守護星為金星。</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <hr style="color:orange">
+                <div class="card-body">
+                    <a href="https://reurl.cc/xQWk4z" target="_blank" class="card-link textColor">星座介紹</a>
+                    <a href="https://reurl.cc/RXDkye" target="_blank" class="card-link textColor">性格特質</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自動倫波 -->
+    <!-- <div id="imm" data-bs-interval="1000" data-bs-ride="carousel" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#imm" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#imm" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#imm" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+
+            <div class="carousel-item">
+
+            </div>
+            <div class="carousel-item">
+
+            </div>
+            <div class="carousel-item">
+
+            </div>
+            <div class="carousel-item">
+
+            </div>
+            <div class="carousel-item">
+
+            </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#imm" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imm" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>title
+        </button>
+    </div> -->
+
+ 
+    <div>
+        <a href="#" style="display: bolck;">
+            <div id="uupTop" style="width:100px;height:100px;"></div>
+        </a>
+    </div>
+   
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container" style="text-align:center ;">
+            <span class="text-muted">常見問題 | 服務條款 | 隱私權政策 | 參考網站:維基百科</span>
+        </div>
+    </footer>
+
+
+    <script>
+        $(".owl-carousel1").owlCarousel({
+            loop: true, // 循環播放
+            margin: 10, // 外距 10px
+            nav: true, // 顯示點點
+            responsive: {
+                0: {
+                    items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+                },
+                600: {
+                    items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
+                },
+                1000: {
+                    items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

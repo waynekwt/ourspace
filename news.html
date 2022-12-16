@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- owl.carousel -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    </link>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    </link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> -->
+    <!-- owl.carousel -->
+    <title>OUTERSPACE的科學資料庫</title>
+    <style>
+        /* 動態畫底線 (一般)*/
+        /* 動態畫底線 (一般)*/
+        .nav-item a::after {
+            content: " ";
+            display: block;
+            width: 0%;
+            height: 4px;
+            background-color: orange;
+            transition: .4s .1s;
+        }
+
+        .nav-item a:hover::after {
+            width: 50%;
+        }
+
+
+        /* 带文字内容的分隔线 */
+        .hr-solid-content {
+            color: orange;
+            border: 0;
+            font-size: 24px;
+            padding: 1em 0;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+            mask-image: linear-gradient(to right, transparent, black, transparent);
+        }
+
+        .hr-solid-content::before {
+            content: attr(data-content);
+            position: absolute;
+            padding: 0 1ch;
+            line-height: 6px;
+            border: solid orange;
+            border-width: 0 99vw;
+            width: fit-content;
+            /* for 不支持fit-content浏览器 */
+            white-space: nowrap;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 文字隱藏 */
+        .textSize {
+            overflow: hidden;
+            /* white-space: nowrap; */
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        /* 顯示說明文字 */
+        /* .textSize:hover {
+            overflow: inherit;
+        } */
+
+        /* 圖片靠近放大 */
+
+        .card {
+            overflow: hidden;
+            transform: scale(1, 1);
+            transition: all 0.5s ease-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05, 1.05);
+        }
+
+
+        /* 靠近文字變色 */
+        .textColor:hover {
+            color: orange;
+        }
+
+        /* 超連結取消底線 */
+        a {
+            text-decoration: none
+        }
+
+        /* 回到頂端 */
+        #uupTop {
+            width: 50px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-image: url(_img/cover/rocket.png);
+            background-color: transparent;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* 背景顏色 */
+        body {
+            /* color: orange; */
+            background: rgb(2, 0, 36);
+            background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        }
+
+        .textColor {
+            color: orange;
+        }
+
+        .card {
+            background: rgb(2, 0, 36);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light sticky-top clearfix">
+        <div class="container-fluid">
+            <a class="navbar-brand col-2" href="#"><img src="./_img/cover/Logo1.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ">
+                    <li class="nav-item col-3">
+                        <a class="nav-link active textColor" aria-current="page" href="homeword.html">基本介紹</a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" href="story.html">延伸閱讀</a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" href="star.html">星座相關</a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" href="news.html">科普知識</a>
+                    </li>
+                    <li class="nav-item2 dropdown col-3">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            觀測網站連結
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.google.com/moon/
+                                ">Google Sky</a></li>
+                            <li><a class="dropdown-item" href="https://720yun.com/t/eb42ejpvu1a?scene_id=461882
+                                ">太陽系 |solar system</a></li>
+                        </ul>
+                    </li>
+                    <form class="d-flex col-4" style="float: right">
+                        <input class="form-control me-2" type="search" placeholder="請輸入關鍵字" aria-label="Search">
+                        <button class="btn btn-outline-warning" type="submit">Search</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <hr class="hr-solid-content" data-content="新奇新聞">
+    <br>
+    <!-- 新奇新聞 -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <a href="https://reurl.cc/O4QNog" target="_blank" style="display: bolck;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./_img/news/alien.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title textColor">外星人是否真的存在？「費米悖論」成討論關鍵</h5>
+                        <!-- <p class="card-text textColor">外星人曾來地球？百年前神秘岩畫　驚見「頭大四肢超細」異種</p> -->
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://reurl.cc/eOpllx" target="_blank" style="display: bolck;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./_img/news/pic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title textColor">外星人曾來地球？百年前神秘岩畫　驚見「頭大四肢超細」異種</h5>
+                        <!-- <p class="card-text textColor">外星人曾來地球？百年前神秘岩畫　驚見「頭大四肢超細」異種</p> -->
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://reurl.cc/1m8VxW" target="_blank" style="display: bolck;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./_img/news/ufo1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title textColor">加州驚現「神秘光點」夜空閃爍1小時，網瘋猜UFO</h5>
+                        <!-- <p class="card-text textColor">加州驚現「神秘光點」夜空閃爍1小時，網瘋猜UFO</p> -->
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://reurl.cc/qNpRdg" target="_blank" style="display: bolck;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./_img/news/ufo2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title textColor">北京夜空出現「巨型神秘光圈」 網驚：UFO來了？…真相關鍵竟是「它」</h5>
+                        <!-- <p class="card-text textColor">北京夜空出現「巨型神秘光圈」 網驚：UFO來了？…真相關鍵竟是「它」</p> -->
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://reurl.cc/lepr6E" target="_blank" style="display: bolck;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./_img/news/hole.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title textColor">新研究指巨大黑洞實為「蟲洞」 距離地球最近入口曝光</h5>
+                        <!-- <p class="card-text textColor">新研究指巨大黑洞實為「蟲洞」 距離地球最近入口曝光</p> -->
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://reurl.cc/XV2M1M" target="_blank" style="display: bolck;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./_img/news/time.jpg" cla ss="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title textColor">時光旅行：夢想成真之路上的「蟲洞」和量子</h5>
+                        <!-- <p class="card-text textColor">時光旅行：夢想成真之路上的「蟲洞」和量子</p> -->
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    </div>
+
+    <hr class="hr-solid-content" data-content="熱門太空電影">
+    <!-- 影音推薦 -->
+    <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">異形 (1979)</h5>
+                <p class="card-text textSize textColor">
+                    《異形》（英語：Alien）是於1979年上映的一部有巨大影響力的科幻恐怖片，由雷利·史考特導演，雪歌妮·薇佛主演。電影的票房十分成功，是好萊塢創造的一個重要的形象，催生了相關的文學、電子遊戲、紀念品以及三部官方續集。
+                    電影名稱是指電影中的主要敵人，一種有極強攻擊性未知的地球外生命體。在一次對一個未知的行星信號的例行調查中，一隻異形幼體攻擊並且感染了一個太空船員。在異形登上太空船後，很快整個太空船的船員都受到性命威脅，最終被毀滅。
+                </p>
+                <a href="https://reurl.cc/nOxOzd" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">沙丘 (2021)</h5>
+                <p class="card-text textSize textColor">
+                    【沙丘】講述一個神祕又性格強烈的英雄之心路歷程，本片講述保羅亞崔迪的故事，他是一個聰明又富有天賦的年輕人，肩負超越自己理解的偉大天命，且必須遠行至宇宙中最危險的行星，以確保他家人及族人未來的延續。敵對勢力為搶奪唯有此行星才出產的珍貴資源大打出手，而這也是人類最珍視的資源，一種能解鎖人類偉大潛能的物質，唯有能戰勝自己恐懼的人才能存活。
+                </p>
+                <a href="https://reurl.cc/NROR6k" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie3.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">絕地救援(2015)</h5>
+                <p class="card-text textSize textColor">
+                    太空人馬克瓦特尼（麥特戴蒙　飾）和太空小組登陸火星執行任務時，遭受突如其來的暴風襲擊，他的組員誤以為他已殉職，將他獨留火星便撤退折返地球。被困在火星上的馬克，必須運用他的聰明才智，在有限的資源下努力存活下來，並設法將訊息傳回地球，告訴大家他還活著。美國太空總署和由世界各國優秀的科學家組成的團隊，以及他的太空小組，縝密地計劃著這幾乎不可能達成的太空救援任務，全世界也為馬克加油，期盼他平安歸來。本片改編自全球暢銷小說，由好萊塢億萬票房名導雷利史考特掌鏡，並邀請到黃金卡司陣容包含潔西卡雀絲坦、克莉絲汀薇格、凱特瑪拉、麥可潘納、傑夫丹尼爾、奇維托艾吉佛及唐納葛洛佛等共同演出。
+                </p>
+                <a href="https://reurl.cc/V1n13y" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie4.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">星艦迷航記 (2009)</h5>
+                <p class="card-text textSize textColor">星艦迷靠過來看，最新的星艦迷航記電影終於出爐了！ 這次的故事時間軸放在最原始的星艦迷航記主角們年輕時的故事
+                    並由拍攝《柯洛弗檔案》的J.J.亞伯拉罕監製
+                </p>
+                <a href="https://reurl.cc/1mlmoV" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie5.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">星際效應 (2014)</h5>
+                <p class="card-text textSize textColor">適宜人類居住的星球近在呎尺，能拯救我們免於滅亡？
+                    【全面啟動】、【黑暗騎士】三部曲大導演諾蘭最新鉅作【星際效應】
+                    馬修麥康納、安海瑟威、潔西卡雀絲坦、米高肯恩 11月7日 挑戰未來</p>
+                <a href="https://reurl.cc/kE9E7n" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie6.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">阿波羅13號 (1995)</h5>
+                <p class="card-text textSize textColor">阿波羅13 Apollo 13 (1995),由湯姆漢克斯Tom Hanks / 比爾派斯頓Bill Paxton /
+                    凱文貝肯Kevin
+                    Bacon /
+                    蓋瑞辛尼斯Gary Sinise主演 , 阿波羅十三號是眾多登陸月球的太空任務中，最受人注目的，在離開地球朝向月球的飛航中 ,
+                    氧氣瓶故障爆炸的情況下開始本片的高潮戲，在艾德哈里斯所飾演的地勤中心領軍下，展開距離地球20500哩的救援行動。他們必須模擬太空船裡所有的狀況，在有限的物力、有限的資源並和時間競賽之下，群策群力，把他們的工作夥伴從無重力、無空氣在太空中飛行的太空人救回地球
+                    , 1995年就能拍出那麼精細的太空無重力影片 , 真是非常不得了 , 加上劇情緊張又溫馨 , 真是不得不推的好片</p>
+                <a href="https://reurl.cc/V1n1DR" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie7.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">登月先鋒 (2018)</h5>
+                <p class="card-text textSize textColor">
+                    講述美國太空總署登月任務的精彩故事，鎖定太空人阿姆斯壯1961~1969年的生平故事，改編自詹姆斯漢森富有感情的第一人稱口述傳記，重現阿姆斯壯本人和美國執行史上最危險太空任務時的犧牲和努力。
+
+                    劇本出自金像獎編劇喬許辛格（【驚爆焦點】）之手，製片有Temple Hill Entertainment
+                    製片公司的威克戈弗雷和馬蒂鮑恩（【暮光之城】系列、【生命中的美好缺憾】）、達米恩查澤雷、雷恩葛斯林。執行製片有艾薩克克勞斯諾（【生命中的美好缺憾】）。Amblin
+                    Entertainment亦有出資。</p>
+                <a href="https://reurl.cc/3YyYYO" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie8.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">2009月球漫遊(2009)</h5>
+                <p class="card-text textSize textColor">2009月球漫遊 Moon (2009) , 由山姆洛克威Sam Rockwell / 羅賓喬克Robin Chalk /
+                    凱文史貝西Kevin
+                    Spacey主演 ,
+                    太空人山姆貝爾(山姆洛克威飾演)獨自被派駐月球進行採礦任務，簽下了整整三年的賣身契，孤獨的他只有一台電腦GERTY作陪。一天他在月球上發現了一個一模一樣、但更年輕的自己，同樣聲稱必須完成三年的採礦合約，充滿疑惑的山姆必須在時間之內查明自己身世以及公司的陰謀。不同於以往的太空電影
+                    , 沒有複雜的劇情 , 但卻有令人意想不到的驚奇及懸疑</p>
+                <a href="https://reurl.cc/60X0LV" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+
+        <div class="card col-4" style="width: 30rem;">
+            <img src="./_img/movie/movie9.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title textColor">地心引力 (2013)</h5>
+                <p class="card-text textSize textColor">金獎影后 珊卓布拉克、影帝 喬治克隆尼首度攜手，鬼才導演 艾方索柯朗全新3D太空驚悚鉅作。10月4日(五)，永不放棄。
+                    在一場看似簡單的例行太空任務中，災難發生了。
+                    周遭的一片死寂表示他們已失去與地球的聯繫，隨著每次呼吸，氧氣所剩不多，他們的恐懼挑戰求生的勇氣。然而，他們回家的唯一途徑，是繼續深入浩瀚無際的太空。</p>
+                <a href="https://reurl.cc/60X0LV" target="_blank" class="btn btn-primary">看看預告</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 置頂按鈕 -->
+    <div>
+        <a href="#" style="display: bolck;">
+            <div id="uupTop" style="width:100px;height:100px;"></div>
+        </a>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container" style="text-align:center ;">
+            <span class="text-muted">常見問題 | 服務條款 | 隱私權政策 | 參考網站:維基百科</span>
+        </div>
+    </footer>
+    <script>
+        // $(".owl-carousel").owlCarousel({
+        //     loop: true, // 循環播放
+        //     margin: 10, // 外距 10px
+        //     // nav: true, // 顯示點點
+        //     responsive: {
+        //         0: {
+        //             items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+        //         },
+        //         600: {
+        //             items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
+        //         },
+        //         1000: {
+        //             items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
+        //         }
+        //     }
+        // });
+    </script>
+</body>
+
+</html>

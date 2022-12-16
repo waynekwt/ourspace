@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/_js/popper.min.js">
+    <!-- 引用BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- 引用ICON -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 引用jquery套件 -->
+    <!-- owl.carousel -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    </link>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    </link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> -->
+    <!-- owl.carousel -->
+
+    <title>Document</title>
+    <style>
+        /* 動態畫底線 (一般)*/
+        .nav-item a::after {
+            content: " ";
+            display: block;
+            width: 0%;
+            height: 4px;
+            background-color: orange;
+            transition: .4s .1s;
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        li:hover {
+            color: orange;
+        }
+
+        /* 带文字内容的分隔线 */
+        .hr-solid-content {
+            color: orange;
+            border: 0;
+            font-size: 24px;
+            padding: 1em 0;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+            mask-image: linear-gradient(to right, transparent, black, transparent);
+        }
+
+        .hr-solid-content::before {
+            content: attr(data-content);
+            position: absolute;
+            padding: 0 1ch;
+            line-height: 6px;
+            border: solid orange;
+            border-width: 0 99vw;
+            width: fit-content;
+            /* for 不支持fit-content浏览器 */
+            white-space: nowrap;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 回到頂端 */
+        /* .uuptop {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            height: 50px;
+            width: 50px;
+        } */
+
+        /* 滑動 */
+        /* .owl-theme .item {
+            height: 10rem;
+            background: #4dc7a0;
+            padding: 1rem;
+        }
+
+        .owl-carousel .item h4 {
+            color: #fff;
+            font-weight: 400;
+            font-size: 1.4375rem;
+            margin-top: 0rem;
+        } */
+
+        /* 回到頂端 */
+        .uupTop {
+            width: 50px;
+            position: fixed;
+            bottom: 0px;
+            right: 0;
+            background-image: url(_img/cover/rocket.png);
+            background-color: transparent;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .uupTop.show {
+            /* opacity: 1; */
+            /*淡入顯示*/
+            bottom: 100px;
+            /*移到畫面裡*/
+        }
+
+        /* 輪播大小 */
+        #carouselExampleCaptions {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body {
+            position: relative;
+        }
+
+        /* 左側 */
+        #navbar-example3 {
+            position: fixed;
+            /* float: inline-start; */
+            left: 0;
+            top: 10%;
+            /* padding: 3px; */
+            /* height: 50px; */
+        }
+
+        /* 錨點 */
+        :target::before {
+            content: "";
+            display: block;
+            height: 50px;
+            margin: -60px 0 0;
+        }
+
+        #accordionPanelsStayOpenExample {
+            width: 80%;
+            /* margin-left: 300px; */
+            float: right;
+            /* margin-right: auto; */
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">主頁</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                        <a class="nav-link active" aria-current="page" href="#">基本知識</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="story.html">延伸介紹</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="star.html">星座相關</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">科普知識</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            觀測網站連結
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.google.com/moon/
+                                ">Google Sky</a></li>
+                            <li><a class="dropdown-item" href="https://720yun.com/t/eb42ejpvu1a?scene_id=461882
+                                ">太陽系 |solar system</a></li>
+                        </ul>
+                    </li>
+                    <form class="d-flex ">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 幻燈片 -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+            <!-- 底下按鈕 -->
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="1000">
+                <img src="/_img/cover2/news1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- <h5>First slide label</h5> -->
+                    <p>超清晰：韋伯望遠鏡第一批獵戶座星雲照片出爐，助科學家進一步研究恆星誕生細節</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/_img/cover2/news2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- <h5>Second slide label</h5> -->
+                    <p>韋伯太空望遠鏡又一重大發現！太陽系外行星大氣含有二氧化碳</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/_img/cover2/news3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- <h5>Third slide label</h5> -->
+                    <p>前所未見的木星奇觀！韋伯太空望遠鏡拍下長年肆虐的風暴、絢麗極光與小衛星</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- 導覽列 -->
+
+
+
+    <main>
+
+
+        <!-- 下拉選單 -->
+        <!-- <select class="form-select form-select-sm " aria-label=".form-select-lg example">
+            <option selected>快速前往</option>
+            <option value="1">水星Mercury</option>
+            <option value="2">金星Venus</option>
+            <option value="3">地球Earth</option>
+            <option value="4">火星Mars</option>
+            <option value="5">木星Jupiter</option>
+            <option value="6">土星Saturn</option>
+            <option value="7">天王星Uranus</option>
+            <option value="8">海王星Neptune</option>
+            <option value="9">冥王星Pluto</option>
+        </select> -->
+
+        <!-- 內嵌導覽 -->
+        <div class="row">
+            <div class="col-2">
+                <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#item-1">太陽系介紹</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#item-1-1">太陽系的分類</a>
+                            <a class="nav-link ms-3 my-1" href="#item-1-2">矮行星</a>
+                            <a class="nav-link ms-3 my-1" href="#item-1-3">太陽系小天體</a>
+                        </nav>
+                        <a class="nav-link" href="#item-2">內太陽系</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#item-2-1">水星</a>
+                            <a class="nav-link ms-3 my-1" href="#item-2-2">金星</a>
+                            <a class="nav-link ms-3 my-1" href="#item-2-3">地球</a>
+                            <a class="nav-link ms-3 my-1" href="#item-2-4">火星</a>
+                            <a class="nav-link ms-3 my-1" href="#item-2-5">小行星帶</a>
+                        </nav>
+                        <a class="nav-link" href="#item-3">外太陽系</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#item-3-1">木星</a>
+                            <a class="nav-link ms-3 my-1" href="#item-3-2">土星</a>
+                            <a class="nav-link ms-3 my-1" href="#item-3-3">天王星</a>
+                            <a class="nav-link ms-3 my-1" href="#item-3-4">海王星</a>
+                        </nav>
+                        <a class="nav-link" href="#item-4">海王星外的區域</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#item-4-1">古柏帶</a>
+                            <a class="nav-link ms-3 my-1" href="#item-4-2">離散盤</a>
+                        </nav>
+                    </nav>
+                </nav>
+            </div>
+
+            <div class="col-10">
+                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
+                    class="scrollspy-example-2" tabindex="0">
+                    <div id="item-1">
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        太陽系介紹
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <strong>太陽系是一個受太陽重力約束在一起的恆星系統，包括太陽以及直接或間接圍繞太陽運動的天體。
+                                            在直接圍繞太陽運動的天體中，最大的八顆被稱為行星，其餘的天體要比行星小很多，
+                                            比如矮行星、太陽系小天體的小行星和彗星。</strong>
+                                        軌道間接圍繞太陽運動的天體是衛星，其中有兩顆比最小的行星水星還要大
+                                        <p>
+                                            太陽系的形成大約始於46億年前一個巨型星際分子雲的重力塌縮。
+                                            太陽系內絕大部分的質量都集中於
+                                            <span title="popover header" data-bs-toggle="popover" data-bs-content="哈囉"
+                                                data-bs-placement="bottom" data-bs-trigger="hover">
+                                                <a href="#">太陽</a>
+                                            </span>
+                                            ，餘下的天體中，質量最大的是木星。
+                                            位於太陽系內側的是四顆較小的行星，分別是水星、金星、地球和火星，它們被稱為類地行星，
+                                            主要由岩石和金屬構成。
+                                            外側的四顆行星被稱為巨行星，其質量比類地行星要大得多。其中最大的兩顆是木星和土星，
+                                            它們都是氣態巨行星，主要成分是氫和氦。
+                                            最外側的兩顆行星是天王星和海王星，它們是冰巨星，
+                                            主要由一些熔點比氫和氦更高的揮發成分組成，比如水、氨和甲烷。
+                                            幾乎所有的行星都在靠近黃道平面的軌道上運行。
+                                        </p>
+                                        <p>太陽系也包含許多較小的天體位於火星和木星軌道之間的主小行星帶，
+                                            其中的大部分天體都是像類地行星那樣由岩石和金屬組成。在海王星軌道之外是古柏帶和離散盤，
+                                            包含了有大量的海王星外天體，主要由冰組成，再往外還有新發現的類塞德娜天體（sednoid）。
+                                            在這些天體中，有幾十甚至上萬顆足夠大的天體，能靠自身的重力形成球體，
+                                            這些天體被稱為為矮行星。
+                                            已經被確認是矮行星的包括小行星帶的穀神星，和海王星外天體的冥王星和鬩神星。</p>
+                                        <p>所謂的「內太陽系」(The inner solar system) 包括了太陽、水星、金星、地球及火星，</p>
+                                        <p>而「外太陽系」(The outer solar system) 則有木星、土星、天王星、海王星及冥王星。</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="item-1-1">
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        太陽系的分類
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <p>軌道環繞太陽的天體被分為三類：行星、矮行星、和太陽系小天體</p>
+                                        <p>行星是環繞太陽且質量夠大的天體。這類天體：</p>
+                                        <ol>
+                                            <li>有足夠的質量使本身的形狀成為球體</li>
+                                            <li>有能力清空鄰近軌道的小天體</li>
+                                        </ol>
+                                        <p> 能成為行星的天體有8個：水星、金星、地球、火星、木星、土星、天王星和海王星。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- <ol>
+                        <li><strong>行星</strong>
+                            (planet)：繞太陽公轉的大型星體。</li>
+                        <li>行星的<strong>衛星</strong>
+                            (satellite)：繞行星公轉的各種大小星體。</li>
+                        <li><strong>小行星</strong>
+                            (asteroid)：繞太陽公轉的小星體。</li>
+                        <li><strong>彗星</strong>
+                            (comet)：以狹長軌道繞太陽公轉的小冰球。</li>
+                    </ol> -->
+                    <div id="item-1-2">
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        <h5>矮行星</h5>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <p>矮行星（英語：Dwarf planet），又稱中行星、準行星、侏儒行星，是具有行星級質量，但既不是行星，
+                                            也不是衛星的天體。</p>
+                                        <ol>
+                                            <li>它是直接環繞著恆星，並且自身的重力足以達成流體靜力平衡的形狀（通常是球體）</li>
+                                            <li>但未能清除鄰近軌道上的其它小天體和物質</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div id="item-1-3">
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        <h5>太陽系小天體</h5>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <p>太陽系小天體（small Solar System Body, SSSB）是國際天文聯會在2006年重新解釋太陽系內的行星
+                                            和矮行星時，產生的新天體分類項目。</p>
+                                        <p>是指除了矮行星之外的所有小行星：</p>
+                                        <ol>
+                                            <li>傳統的小行星（除了最大的穀神星）</li>
+                                            <li>半人馬小行星和特洛伊天體</li>
+                                            <li>海王星外天體（除了冥王星、鬩神星、鳥神星和妊神星）</li>
+                                            <li>所有的彗星</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div id="item-2">
+                        <h4>內太陽系</h4>
+                        <p>內太陽系是包括類地行星和小行星帶的區域。主要成分是矽酸鹽和金屬，相對而言是太陽系內較靠近太陽的
+                            區域，而整個區域的半徑小於木星軌道和土星軌道之間的距離。
+                            這個區域也在凍結線，距離太陽略小於5AU（大約7億公里）的範圍內。
+                        </p>
+                    </div>
+                    <div id="item-2-1">
+                        <h5>水星</h5>
+                        <p>水星是最靠近太陽（距離太陽0.4天文單位），也是太陽系內最小（0.055地球質量）的行星。
+                            水星沒有天然衛星；僅知的地質特徵，除了撞擊坑外，只有淺裂的山脊或大概是在早期歷史擴張
+                            與收縮期間產生的峭壁。水星只有非常稀薄的大氣層，它是由太陽風炸飛表面的原子形成的。
+                            它有目前還沒有完美解釋，相對於薄薄的地函而言是非常巨大的鐵核。
+                            主流的假設是它的外層被巨大的撞擊剝離；或著年輕太陽的能量抑制了它外殼的生長。
+                        </p>
+                    </div>
+                    <div id="item-2-2">
+                        <h5>金星</h5>
+                        <p>金星（距太陽0.7 天文單位）的體積與地球相似（0.815地球質量），沒有天然的衛星。
+                            它和地球一樣有厚厚的矽酸鹽地函包圍著鐵的核心，還有內部地質活動的證據。它有濃厚的大氣層，
+                            但是非常乾燥，而且密度比地球高90倍，其主要成份是二氧化碳，還有極少量的氮。
+                            它是顆炙熱的行星，表面的溫度超過400℃（752℉），很可能是大氣層中有大量的溫室氣體造成的。
+                            目前沒有表面有地質活動的確切證據，但是金星沒有磁場可以阻止實質大氣層的流失，
+                            這暗示它有火山活動來補充。
+                        </p>
+                    </div>
+                    <div id="item-2-3">
+                        <h5>地球</h5>
+                        <p>地球（距離太陽1 AU）是質量和密度都最大的內行星，也是唯一已知有地質活動和生命存在的行星。
+                            它液體的水圈是類地行星中獨一無二的，也是唯一有板塊活動出現的星球。地球的大氣層完全不同於其它的行星，
+                            被現存的生物改變成有21%自由氧氣的大氣層。它有一顆天然衛星－月球，是太陽系類地行星擁有的唯一大衛星。
+                        </p>
+                    </div>
+                    <div id="item-2-4">
+                        <h5>火星</h5>
+                        <p>火星（距太陽1.5天文單位）比地球和金星小，其質量為地球的10.7%。火星大氣主要由二氧化碳構成，
+                            火星表面的氣壓為6.1毫巴（大約是地球大氣壓的0.6%）。其表面有大量火山和裂谷，
+                            比如奧林匹斯山和水手峽谷，火星在過去200萬年間都有火山活動，
+                            這表明火星的地質活動至少可以追溯到2百萬年前。火星表面呈紅色是因為其土壤中含有氧化鐵（鐵鏽）。
+                            火星有兩顆較小的天然衛星（傅博斯和戴摩斯），它們被認為是火星捕獲到的小行星。</p>
+                    </div>
+                    <div id="item-2-5">
+                        <h5>小行星帶</h5>
+                        <p>除了最大的穀神星之外，所有的小行星都屬於太陽系小天體，並且主要成分都是耐熔質的岩石和金屬的礦物，
+                            與些許的冰[94][95]。它們的大小從幾米到幾百公里都有。小於一米的小行星通常稱為流星體或微流星體
+                            （榖粒的尺寸），只是依據大小的不同，是有點過於武斷的定義。</p>
+                        <p>
+                            小行星帶分布在火星軌道和木星軌道間，距離太陽2.3AU至3.3AU的範圍內。
+                            它被認為是受到木星的重力干擾而不能凝聚成型的失敗行星，是太陽系形成時遺留下的物質。
+                            小行星帶包含成千上萬，甚至數百萬顆直徑過一公里的小天體。
+                            儘管這樣，估計小行星帶的總質量不會超過地球的千分之一。小行星帶是非常空曠的，
+                            太空船經常飛越這個區域，都未曾發生任何事件。</p>
+                    </div>
+                    <div id="item-3">
+                        <h4>外太陽系</h4>
+                        <p>外太陽系區域是巨行星和它們的大衛星的家，半人馬小行星和許多短週期彗星的軌道也在這一區。
+                            由於它們離太陽更遠，外太陽系包含的固體物質比內太陽系含有更多的揮發性物質，
+                            像是水、氨和甲烷的比例都較高，而因為溫度低，使得這些化合物都成為固態。
+                        </p>
+                    </div>
+                    <div id="item-3-1">
+                        <h5>木星</h5>
+                        <p>木星（距離太陽5.2AU），質量是地球的318倍，是其它行星質量總和的2.5倍，其組成絕大部分是氫和氦。
+                            木星內部豐沛的熱能在大氣層中創造出半永久性的特徵，例如雲帶和大紅斑。木星已知的衛星有79顆，
+                            4顆最大的，蓋尼美德、卡利斯多、埃歐和歐羅巴，顯示出類似於類地行星的性質，像是火山和內熱。
+                            蓋尼美德是太陽系內最大的衛星，比水星還要大。
+                        </p>
+                    </div>
+                    <div id="item-3-2">
+                        <h5>土星</h5>
+                        <p>土星（距離太陽9.5 AU），最大的特徵是寬闊環系統，有些與木星相似的性質，像是大氣成分和磁氣圈等。
+                            雖然土星的體積是木星的60%，但質量不到木星的三分之一，只是地球的95倍。
+                            土星是太陽系內唯一密度比水低的行星。土星環由小冰塊和岩石顆粒組成；已知土星的衛星有82顆，
+                            為最多衛星的行星。其中兩顆：泰坦和恩克拉多斯顯示有地質活動的跡象。
+                            泰坦是太陽系第二大的衛星，也比水星大，並且是太陽系內唯一有大氣層的衛星。
+                        </p>
+                    </div>
+                    <div id="item-3-3">
+                        <h5>天王星</h5>
+                        <p>天王星（距離太陽19.2AU），質量是地球的14倍，是最輕的外行星。 它是顆獨特的行星，側躺在軌道上，
+                            對黃道的轉軸傾角超過九十度。相較於其他的巨行星，它的核心是最冷的，輻射到太空的熱量很少。
+                            天王星已知的衛星有27顆，最大的幾顆衛星是泰坦妮亞、奧伯龍、烏姆柏里厄爾、艾瑞爾、米蘭達。
+                        </p>
+                    </div>
+                    <div id="item-3-4">
+                        <h5>海王星</h5>
+                        <p>海王星（距離太陽30.1 AU），雖然體積略小於天王星，但質量卻較大（相當於17倍的地球質量），
+                            因而有較高的密度。它散發出較多的內熱，但沒有木星和土星的多。已知的海王星衛星有14顆，
+                            最大的崔頓地質異常活躍，有冰火山和液態氮。海衛一是唯一有著逆行軌道的大衛星。
+                            有幾顆小行星在軌道上伴隨著，稱為海王星特洛伊，與海王星有著1:1的軌道共振。
+                        </p>
+                    </div>
+
+                    <div id="item-4">
+                        <h4>海王星外的區域</h4>
+                        <p>
+                            在海王星軌道之外，還存在著海王星外天體、甜甜圈形狀的古柏帶、冥王星和一些其它的矮行星，
+                            和部分和古柏帶重疊，但向盤面傾斜到達更遠處的離散盤天體。整個地區仍是大量未探索的空間。
+                            它似乎是壓到性的全部由數以千計的小天體組成 －－最大的直徑不到地球的五分之一，
+                            且質量遠小於月球，主要由冰和岩石組成。這個地區有時被描述為「太陽系第三區」，
+                            包圍著內太陽系和外太陽系。
+                        </p>
+                        <!-- <p>彗星是太陽系小天體，通常只有幾公里的直徑，成分大部分是揮發性冰。它們的軌道有很高的離心率，
+                            近日點在內行星的區域內，而遠日點遠在冥王星軌道之外。當一顆彗星進入內太陽系，
+                            會導致它冰冷的表面昇華和電離，創造出彗髮，和經常可以用肉眼看見，由氣體和塵埃構成的長長彗尾。
+
+                            短週期彗星是軌道週期短於200年的彗星，長週期彗星的軌道週期可以長達數千年。
+                            短週期彗星被認為起源於古柏帶，長週期彗星，像是海爾-波普彗星，被認為起源於歐特雲。
+                            許多彗星群體，像是克魯茲族彗星，是從單一母彗星的解體。有些有著雙曲線軌道的彗星，
+                            可能是來自太陽系外，但是很難精確的測量出它們的軌道。
+                            揮發性物質被太陽熱耗盡的老彗星通常會被歸類為小行星。
+                        </p> -->
+                    </div>
+
+                    <div id="item-4-1">
+                        <h5>古柏帶</h5>
+                        <p>古柏帶是由大量碎屑組成，類似於小行星帶，但是組成物體的主要成分是冰。
+                            它延伸在距離太陽30AU至50AU的空間之間，雖然估計其間包含直徑數百米到數千米的矮行星，
+                            但主要還是由太陽系小天體組成。許多大的古柏帶天體，像是創神星、伐羅那和亡神星，
+                            當有近一步的資料後，可能會是矮行星。估計古柏帶有100,000顆直徑大於50公里的小天體，
+                            但古柏帶的總質量只有地球的十分之一或甚至只有百分之一。
+                            許多古柏帶天體都有多顆衛星，和大多數的軌道都在黃道平面之外。
+                        </p>
+                    </div>
+                    <div id="item-4-2">
+                        <h5>離散盤</h5>
+                        <p>離散盤，在黃道部分與古柏帶重疊，並進一步向外延伸，被認為是短週期彗星的來源。
+                            離散盤的天體被認為是在太陽系形成時，海王星早期向外遷移時受到重力影響，被噴出進入不穩定軌道。
+                            多數離散盤天體（SDOs）的近日點在古柏帶內，但遠日點又遠遠超過（有些距離太陽 遠達150AU）。
+                            離散盤天體的軌道對黃道面有著高度的傾斜，甚至於垂直黃道面。
+                            有些天文學家認為離散盤天體只是古柏帶的另一個區域，因此描述離散盤天體為「離散古柏帶天體」。
+                            也有些天文學家將半人馬小行星歸類為向內離散古柏帶天體，
+                            而一併將離散盤天體歸類為向外離散古柏帶天體。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 測試 -->
+
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Accordion Item #1
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <strong>This is the first item's accordion body.</strong> It is shown by
+                        default, until the collapse plugin adds the appropriate classes that we use to
+                        style each element. These classes control the overall appearance, as well as the
+                        showing and hiding via CSS transitions. You can modify any of this with custom
+                        CSS or overriding our default variables. It's also worth noting that just about
+                        any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit overflow.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 內嵌導覽結束 -->
+        <br>
+        <!-- 標題 -->
+        <!-- <h1>Example heading <span class="badge bg-secondary">New</span></h1> -->
+
+
+        <!-- 快速連結按鈕 -->
+        <!-- <button type="button" class="btn btn-outline-warning">Warning</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button> -->
+
+        <br><br><br>
+
+        <!-- 分隔線 -->
+        <!-- <hr class="hr-solid-content" data-content="分隔線"> -->
+
+
+
+        <!-- 12星座介紹卡 -->
+
+        <!-- 12星座介紹結束 -->
+        <!-- <div class="card">
+            <img src="img.jpg" alt="John" style="width:100%">
+            <h1>John Doe</h1>
+            <p class="title">CEO & Founder, Example</p>
+            <p>Harvard University</p>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <p><button>Contact</button></p>
+          </div> -->
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Accordion Item #1
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+              data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Accordion Item #2
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Accordion Item #3
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+    </main>
+    <!-- 回到頂端按鈕 -->
+    <div>
+        <a href="#" style="display: bolck;">
+            <div class="uupTop" style="width:100px;height:100px;"></div>
+        </a>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">常見問題|服務條款|隱私權政策|聯絡客服</span>
+        </div>
+    </footer>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+        //回到頂端
+        $(function () {
+
+            var $win = $(window);
+
+            var $backToTop = $('.uuptop');
+
+            // 當用戶滾動到離頂部100像素時，展示回到頂部按鈕
+
+            $win.scroll(function () {
+
+                if ($win.scrollTop() > 100) {
+
+                    $backToTop.show();
+
+                } else {
+
+                    $backToTop.hide();
+
+                }
+
+            });
+
+            // 當用戶點擊按鈕時，通過動畫效果返回頭部
+
+            $backToTop.click(function () {
+
+                $('html, body').animate({ scrollTop: 0 }, 200);
+            });
+
+        });
+        //滑動視窗
+        $(".owl-carousel").owlCarousel({
+            loop: true, // 循環播放
+            margin: 10, // 外距 10px
+            nav: false, // 顯示點點
+
+
+            responsive: {
+                0: {
+                    items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+                },
+                600: {
+                    items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
+                },
+                1000: {
+                    items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
+                }
+            }
+        });
+        //滾動監控
+        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+            target: '#navbar-example3'
+        })
+        var firstScrollSpyEl = document.querySelector('[data-bs-spy="scroll"]')
+        firstScrollSpyEl.addEventListener('activate.bs.scrollspy', function () {
+            // do something...
+        })
+        //提示框
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+        // 自動輪播
+
+        //實現自動輪播效果
+        var left = document.querySelector('.carousel-control-prev');
+        var right = document.querySelector('.carousel-control-next');
+        var box = document.querySelector('.carousel slide');
+        box.addEventListener('mouseenter', function () {
+            left.style.display = 'block';
+            right.style.display = 'block';
+        })
+        box.addEventListener('mouseleave', function () {
+            left.style.display = 'none';
+            right.style.display = 'none';
+        })
+        var timer = this.setInterval(function () {
+            right.click();
+        }, 2000)
+        //top    
+
+
+
+        window.onscroll = function () {
+
+            /*當瀏覽器捲軸往下捲100px*/
+            const px = 100;
+            if (document.body.scrollTop > px || document.documentElement.scrollTop > px) {
+                $(".uupTop").addClass("show");/*顯示*/
+
+            } else {
+                $(".uupTop").removeClass("show");/*隱藏*/
+            }
+        };
+
+    </script>
+</body>
+
+</html>
